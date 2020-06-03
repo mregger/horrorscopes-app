@@ -1,5 +1,5 @@
 {
-    "/api/*": {
+    "*": {
         "target": "https://us-central1-my-horrorscopes.cloudfunctions.net/",
         "secure": false,
         "logLevel": "debug"
