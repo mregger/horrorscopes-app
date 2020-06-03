@@ -67,7 +67,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "horrorscope:build:production"
+              "browserTarget": "horrorscope:build:production",
               "proxyConfig": "src/proxy.conf.json"
             }
           }
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "horrorscope:build"
+            "browserTarget": "horrorscope:build",
             "proxyConfig": "src/proxy.conf.json"
           }
         },
