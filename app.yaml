@@ -1,0 +1,22 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+  - url: /
+    static_files: dist/horrorscope/index.html
+    upload: dist/horrorscope/index.html
+  - url: /
+    static_dir: dist/horrorscope
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - platforms/
+  - www/
+  - src/
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE
