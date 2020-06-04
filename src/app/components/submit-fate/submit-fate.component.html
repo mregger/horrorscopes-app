@@ -1,1 +1,51 @@
-<p>submit-fate works!</p>
+<div class="about-submit">
+  <button
+    [@fadeInOut]
+    class="show-form"
+    mat-button>
+    <mat-icon>sort</mat-icon>
+  </button>
+  <button
+    [@fadeInOut]
+    class="show-form"
+    mat-button
+    (click)="onShowForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<form [@fadeInOut] class="submit-form-body" *ngIf="showForm">
+  <mat-form-field class="sign-select-field">
+    <mat-select
+      [formControl]="signFormControl"
+      multiple>
+      <mat-option *ngFor="let sign of signs" [value]="sign">
+        {{ sign }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="mandatory-second-field" style="display: none">
+    <input
+      matInput
+      autocomplete="off"
+      #secondInput
+      [placeholder]="'Fate'"
+      [formControl]="secondFormControl">
+  </mat-form-field>
+  <mat-form-field class="fate-input-field">
+    <input
+      matInput
+      autocomplete="off"
+      #textInput
+      [placeholder]="'Fate'"
+      [formControl]="fateFormControl">
+  </mat-form-field>
+  <button class="g-recaptcha"
+    data-sitekey="6LdXYgAVAAAAACz4Ls8ROtkAKUdK-RVXbs3TTszt"
+    data-callback='onSubmit'
+    data-action='submit'
+    mat-button
+    (click)="onEnter()">
+    <mat-icon>check</mat-icon>
+  </button>
+</form>

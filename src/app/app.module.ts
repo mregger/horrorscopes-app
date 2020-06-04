@@ -2,6 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatSelectModule,
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,13 +25,20 @@ import { ApiService } from './services/api.service';
     SignPickerComponent,
     AboutComponent,
     SubmitFateComponent,
-    HorrorscopeDisplayComponent
+    HorrorscopeDisplayComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

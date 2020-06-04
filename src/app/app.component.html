@@ -7,8 +7,12 @@
   </div>
   <app-sign-picker (onSelection)="newSelection($event)">
   </app-sign-picker>
-  <app-horrorscope-display [fate]="horrorscope">
+  <app-horrorscope-display class="display-container" [fate]="horrorscope">
   </app-horrorscope-display>
+  <div *ngIf="resultsArrived">
+    <app-submit-fate (submission)="onSubmit($event)">
+    </app-submit-fate>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

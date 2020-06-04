@@ -10,6 +10,7 @@ import { ApiService } from './services/api.service';
 export class AppComponent implements OnInit {
 
   public horrorscope: string;
+  public resultsArrived: boolean = false;
 
   constructor(
     private _apiService: ApiService,
@@ -22,8 +23,18 @@ export class AppComponent implements OnInit {
   public newSelection(sign: string): void {
     this.horrorscope = undefined;
     console.dir('app', sign);
-    this._apiService.getHorror(sign).subscribe((h: string) => {
-      this.horrorscope = h;
+    this._apiService.getHorror(sign).subscribe(h => {
+      console.log(h.fate);
+      console.log('balls on fire');
+      this.horrorscope = h.fate;
+      this.resultsArrived = true;
     });
+  }
+
+  public onSubmit(submission: any): void {
+    console.dir(submission);
+    this._apiService.putData(submission).subscribe(x => {
+      console.dir(x)
+    })
   }
 }
