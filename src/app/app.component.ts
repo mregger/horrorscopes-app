@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
 
   public newSelection(sign: string): void {
     this.horrorscope = undefined;
+    this.resultsArrived = false;
     console.dir('app', sign);
     this._apiService.getHorror(sign).subscribe(h => {
       console.log(h.fate);

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, ElementRef, Output, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -42,6 +42,10 @@ export class SubmitFateComponent implements OnInit {
 
   public secondFormControl: FormControl = new FormControl('');
 
+  @ViewChild('textInput', {static: false}) inputRef: ElementRef;
+
+  @ViewChild('signSelect', {static: false}) signRef: ElementRef;
+
   @Output() public submission: EventEmitter<object> = new EventEmitter<object>()
 
   constructor() { }
@@ -58,11 +62,13 @@ export class SubmitFateComponent implements OnInit {
   }
 
   public onEnter(): void {
-    if (!this.secondFormControl.value) {
+    if (!this.secondFormControl.value && this.fateFormControl.value && this.signFormControl.value) {
       this.submission.emit({
         fate: this.fateFormControl.value,
         signs: this.signFormControl.value,
       });
+      this.fateFormControl.setValue(null);
+      this.signFormControl.setValue(null);
     }
   }
 

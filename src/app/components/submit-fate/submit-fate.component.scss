@@ -5,15 +5,17 @@
 }
 
 .submit-form-body {
+  padding-top: 25px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-
-  .sign-select-field {
-  }
 
   .fate-input-field {
     margin-left: 15px;
     margin-right: 15px;
+    height: auto;
   }
 }
