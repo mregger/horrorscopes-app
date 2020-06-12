@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 
+import { debounceTime, delay } from 'rxjs/operators';
+
 import { ApiService } from './services/api.service';
 
 @Component({
@@ -11,6 +13,7 @@ export class AppComponent implements OnInit {
 
   public horrorscope: string;
   public resultsArrived: boolean = false;
+  public loading: boolean = false;
 
   constructor(
     private _apiService: ApiService,
@@ -23,12 +26,16 @@ export class AppComponent implements OnInit {
   public newSelection(sign: string): void {
     this.horrorscope = undefined;
     this.resultsArrived = false;
+    this.loading = true;
     console.dir('app', sign);
-    this._apiService.getHorror(sign).subscribe(h => {
+    this._apiService.getHorror(sign).pipe(
+      delay(2000)
+    ).subscribe(h => {
       console.log(h.fate);
       console.log('balls on fire');
       this.horrorscope = h.fate;
       this.resultsArrived = true;
+      this.loading = false;
     });
   }
 

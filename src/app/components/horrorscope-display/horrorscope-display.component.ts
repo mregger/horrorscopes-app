@@ -17,6 +17,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class HorrorscopeDisplayComponent implements OnInit {
 
   @Input() public fate: string;
+  @Input() public loading: boolean;
 
   constructor() { }
 

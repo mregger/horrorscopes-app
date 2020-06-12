@@ -1,3 +1,8 @@
-<div *ngIf="fate" class="display">
+<div *ngIf="fate && !loading" class="display">
   <p [@fadeInOut]> {{ fate }} </p>
+</div>
+<div *ngIf="loading" class="display">
+  <p [@fadeInOut]>
+      Contacting oracle...
+  </p>
 </div>

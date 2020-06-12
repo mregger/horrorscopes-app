@@ -1,6 +1,7 @@
 import { Component, EventEmitter, ElementRef, Output, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-submit-fate',
@@ -48,7 +49,9 @@ export class SubmitFateComponent implements OnInit {
 
   @Output() public submission: EventEmitter<object> = new EventEmitter<object>()
 
-  constructor() { }
+  constructor(
+    public aboutDialog: MatDialog,
+  ) { }
 
   ngOnInit() {
   }
@@ -75,4 +78,15 @@ export class SubmitFateComponent implements OnInit {
   public onShowForm() {
     this.showForm = true;
   }
+
+  public onAbout(): void {
+    console.dir('balls');
+    const dialogRef = this.aboutDialog.open(AboutDialog);
+  }
 }
+
+@Component({
+  selector: 'about-dialog',
+  template: '<p>This application is powered by some of the most well known psychics in the modern era.</p><br/><p>Just kidding, it\'s all randomly picked</p>',
+})
+export class AboutDialog {}
